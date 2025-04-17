@@ -129,6 +129,30 @@ body {
   font-size: 1.2rem;
 }
 
+/* Cart Icon and Notification Badge */
+.cart-icon {
+  position: relative;
+  text-decoration: none;
+  color: white;
+  font-size: 1.5rem;
+}
+
+.cart-notification {
+  position: absolute;
+  top: -10px;
+  right: -10px;
+  background: red;
+  color: white;
+  font-size: 0.8rem;
+  padding: 2px 6px;
+  border-radius: 50%;
+  display: none; /* Hidden by default */
+}
+
+.cart-notification.show {
+  display: block; /* Show when there are items in the cart */
+}
+
 footer {
   background: #333;
   color: white;
