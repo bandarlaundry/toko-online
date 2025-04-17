@@ -1,14 +1,14 @@
-// Sample Product Data
+// Sample Product Data with Images
 const products = [
-  { id: 1, name: "Produk 1", price: 10000 },
-  { id: 2, name: "Produk 2", price: 20000 },
-  { id: 3, name: "Produk 3", price: 30000 },
-  { id: 4, name: "Produk 4", price: 40000 },
-  { id: 5, name: "Produk 5", price: 50000 },
-  { id: 6, name: "Produk 6", price: 60000 },
-  { id: 7, name: "Produk 7", price: 70000 },
-  { id: 8, name: "Produk 8", price: 80000 },
-  { id: 9, name: "Produk 9", price: 90000 },
+  { id: 1, name: "Produk 1", price: 10000, image: "https://via.placeholder.com/150" },
+  { id: 2, name: "Produk 2", price: 20000, image: "https://via.placeholder.com/150" },
+  { id: 3, name: "Produk 3", price: 30000, image: "https://via.placeholder.com/150" },
+  { id: 4, name: "Produk 4", price: 40000, image: "https://via.placeholder.com/150" },
+  { id: 5, name: "Produk 5", price: 50000, image: "https://via.placeholder.com/150" },
+  { id: 6, name: "Produk 6", price: 60000, image: "https://via.placeholder.com/150" },
+  { id: 7, name: "Produk 7", price: 70000, image: "https://via.placeholder.com/150" },
+  { id: 8, name: "Produk 8", price: 80000, image: "https://via.placeholder.com/150" },
+  { id: 9, name: "Produk 9", price: 90000, image: "https://via.placeholder.com/150" },
 ];
 
 const itemsPerPage = 8;
@@ -30,6 +30,7 @@ function renderProducts(page) {
     const card = document.createElement("div");
     card.className = "product-card";
     card.innerHTML = `
+      <img src="${product.image}" alt="${product.name}">
       <h3>${product.name}</h3>
       <p>Rp ${product.price.toLocaleString()}</p>
       <button onclick="addToCart(${product.id})">Tambah ke Keranjang</button>
@@ -101,6 +102,34 @@ function updateCartDisplay() {
   cartTotal.textContent = `Rp ${total.toLocaleString()}`;
 }
 
+// Toggle Cart Sidebar
+function toggleCart() {
+  const cartSidebar = document.getElementById("cartSidebar");
+  cartSidebar.classList.toggle("show");
+  updateCartDisplay();
+}
+
+// Send Cart to WhatsApp
+function sendCartToWhatsApp() {
+  if (cart.length === 0) {
+    alert("Keranjang kosong!");
+    return;
+  }
+
+  let message = "Pesanan saya:\n";
+  let total = 0;
+
+  cart.forEach((item) => {
+    message += `- ${item.name} (x${item.quantity}) Rp ${(item.price * item.quantity).toLocaleString()}\n`;
+    total += item.price * item.quantity;
+  });
+
+  message += `\nTotal: Rp ${total.toLocaleString()}`;
+
+  const whatsappUrl = `https://wa.me/6285773009666?text=${encodeURIComponent(message)}`;
+  window.open(whatsappUrl, "_blank");
+}
+
 // Hamburger Menu
 const hamburger = document.querySelector(".hamburger");
 const navLinks = document.querySelector(".nav-links");
@@ -109,15 +138,16 @@ hamburger.addEventListener("click", () => {
   navLinks.classList.toggle("active");
 });
 
-// Contact Form Redirect
-document.getElementById("contactForm").addEventListener("submit", function (e) {
-  e.preventDefault();
-  const name = e.target.name.value;
-  const message = e.target.message.value;
-  const whatsappUrl = `https://wa.me/6285773009666?text=${encodeURIComponent(
-    `Nama: ${name}\nPesan: ${message}`
-  )}`;
-  window.open(whatsappUrl, "_blank");
+// Page Navigation
+document.querySelectorAll(".nav-links a").forEach((link) => {
+  link.addEventListener("click", (e) => {
+    e.preventDefault();
+    const targetId = e.target.getAttribute("href").substring(1);
+    document.querySelectorAll(".page").forEach((page) => {
+      page.classList.add("hide");
+    });
+    document.getElementById(targetId)?.classList.remove("hide");
+  });
 });
 
 // Initialize
