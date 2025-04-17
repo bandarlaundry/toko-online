@@ -171,3 +171,43 @@ document.getElementById("contactForm").addEventListener("submit", function (e) {
 // Initialize
 renderProducts(currentPage);
 renderPagination();
+
+// Update Cart Notification Badge
+function updateCartNotification() {
+  const cartNotification = document.getElementById("cartNotification");
+  const totalItems = cart.reduce((total, item) => total + item.quantity, 0);
+
+  if (totalItems > 0) {
+    cartNotification.textContent = totalItems;
+    cartNotification.classList.add("show");
+  } else {
+    cartNotification.textContent = "0";
+    cartNotification.classList.remove("show");
+  }
+}
+
+// Add to Cart Functionality
+function addToCart(productId) {
+  const product = products.find((p) => p.id === productId);
+  if (product) {
+    const existingItem = cart.find((item) => item.id === productId);
+    if (existingItem) {
+      existingItem.quantity += 1;
+    } else {
+      cart.push({ ...product, quantity: 1 });
+    }
+    updateCartDisplay();
+    updateCartNotification(); // Update the notification badge
+    alert(`Produk "${product.name}" telah ditambahkan ke keranjang.`);
+  }
+}
+
+// Toggle Cart Sidebar
+function toggleCart() {
+  const cartSidebar = document.getElementById("cartSidebar");
+  cartSidebar.classList.toggle("show");
+  updateCartDisplay();
+}
+
+// Initialize Cart Notification
+updateCartNotification();
