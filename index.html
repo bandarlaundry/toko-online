@@ -14,6 +14,7 @@
     <ul class="nav-links">
       <li><a href="#kontak">Kontak</a></li>
       <li><a href="#tentang">Tentang</a></li>
+      <li><a href="#" onclick="toggleCart()">Keranjang</a></li>
     </ul>
   </nav>
 
@@ -24,15 +25,8 @@
       <div class="product-grid" id="productGrid"></div>
       <div class="pagination" id="pagination"></div>
     </section>
-   <!-- Shopping Cart -->
-<section class="cart">
-  <h2>Keranjang Belanja</h2>
-  <div id="cartItems" class="cart-items"></div>
-  <div class="cart-total">
-    <strong>Total:</strong> <span id="cartTotal">Rp 0</span>
-  </div>
-</section>
-    <section id="kontak" class="contact">
+
+    <section id="kontak" class="page hide">
       <h2>Kontak Kami</h2>
       <form id="contactForm">
         <input type="text" name="name" placeholder="Nama Anda" required>
@@ -41,11 +35,21 @@
       </form>
     </section>
 
-    <section id="tentang" class="about">
+    <section id="tentang" class="page hide">
       <h2>Tentang Kami</h2>
       <p>Kami adalah toko online yang menyediakan produk berkualitas dengan harga terjangkau.</p>
     </section>
   </main>
+
+  <!-- Shopping Cart -->
+  <aside id="cartSidebar" class="cart-sidebar hide">
+    <h2>Keranjang Belanja</h2>
+    <div id="cartItems" class="cart-items"></div>
+    <div class="cart-total">
+      <strong>Total:</strong> <span id="cartTotal">Rp 0</span>
+    </div>
+    <button onclick="sendCartToWhatsApp()">Kirim ke WhatsApp</button>
+  </aside>
 
   <!-- Footer -->
   <footer>
