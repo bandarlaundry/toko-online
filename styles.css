@@ -25,7 +25,7 @@ body {
 }
 
 .navbar .hamburger {
-  display: none;
+  display: none; /* Hidden by default on larger screens */
   font-size: 1.5rem;
   cursor: pointer;
 }
@@ -144,7 +144,7 @@ footer {
 /* Responsive Styles */
 @media (max-width: 768px) {
   .nav-links {
-    display: none;
+    display: none; /* Hide nav-links by default on mobile */
     flex-direction: column;
     background: #333;
     position: absolute;
@@ -155,10 +155,10 @@ footer {
   }
 
   .nav-links.active {
-    display: flex;
+    display: flex; /* Show nav-links when active */
   }
 
   .hamburger {
-    display: block;
+    display: block; /* Show hamburger icon on mobile */
   }
 }
