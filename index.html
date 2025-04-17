@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Toko Online</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <!-- Navigation -->
+  <nav class="navbar">
+    <div class="logo">Logo</div>
+    <button class="hamburger">&#9776;</button>
+    <ul class="nav-links">
+      <li><a href="#kontak">Kontak</a></li>
+      <li><a href="#tentang">Tentang</a></li>
+    </ul>
+  </nav>
+
+  <!-- Main Content -->
+  <main>
+    <section class="products">
+      <h1>Produk Kami</h1>
+      <div class="product-grid" id="productGrid"></div>
+      <div class="pagination" id="pagination"></div>
+    </section>
+
+    <section id="kontak" class="contact">
+      <h2>Kontak Kami</h2>
+      <form id="contactForm">
+        <input type="text" name="name" placeholder="Nama Anda" required>
+        <input type="text" name="message" placeholder="Pesan Anda" required>
+        <button type="submit">Kirim ke WhatsApp</button>
+      </form>
+    </section>
+
+    <section id="tentang" class="about">
+      <h2>Tentang Kami</h2>
+      <p>Kami adalah toko online yang menyediakan produk berkualitas dengan harga terjangkau.</p>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2023 Toko Online. All rights reserved.</p>
+    <div class="social-icons">
+      <a href="#"><img src="https://img.icons8.com/fluency/48/000000/facebook-new.png" alt="Facebook"></a>
+      <a href="#"><img src="https://img.icons8.com/fluency/48/000000/instagram-new.png" alt="Instagram"></a>
+      <a href="#"><img src="https://img.icons8.com/color/48/000000/twitter--v1.png" alt="Twitter"></a>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
