@@ -7,16 +7,21 @@
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <!-- Navigation -->
-  <nav class="navbar">
-    <div class="logo">Logo</div>
-    <button class="hamburger">&#9776;</button>
-    <ul class="nav-links">
-      <li><a href="#kontak">Kontak</a></li>
-      <li><a href="#tentang">Tentang</a></li>
-      <li><a href="#" onclick="toggleCart()">Keranjang</a></li>
-    </ul>
-  </nav>
+ <!-- Navigation -->
+<nav class="navbar">
+  <div class="logo">Logo</div>
+  <button class="hamburger">&#9776;</button>
+  <ul class="nav-links">
+    <li><a href="#kontak">Kontak</a></li>
+    <li><a href="#tentang">Tentang</a></li>
+    <li>
+      <a href="#" onclick="toggleCart()" class="cart-icon">
+        🛒 <!-- Cart Icon -->
+        <span id="cartNotification" class="cart-notification hide">0</span>
+      </a>
+    </li>
+  </ul>
+</nav>
 
   <!-- Main Content -->
   <main>
